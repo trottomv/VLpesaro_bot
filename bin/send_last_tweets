@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+# require_relative '../lib/VLbot'
+require File.expand_path('../../lib/VLbot', __FILE__)
+VLpesarobot.new.send_last_tweets(minutes: 1)
