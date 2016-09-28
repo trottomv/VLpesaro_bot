@@ -28,12 +28,10 @@ Io sono il Bot 'VL Pesaro [unofficial]', da ora riceverai tutte le notizie della
 Questo bot NON e' associato a U.S.Victoria Libertas Pallacanestro s.s.r.l. che e' una societa' registrata.
 
 Digita /help per ricevere aiuto su come utilizzare questo bot.")
-				# bot.api.send_message(chat_id: ENV['MY_CHAT_ID'], text: "Nuovo iscritto: #{message.from.first_name} #{message.from.last_name} (#{message.from.username})")
 			when '/stop'
 				db = SQLite3::Database.open ENV['PATH_DB']
 				db.execute "DELETE FROM chatid WHERE ID = '#{message.chat.id}'"
 				bot.api.send_message(chat_id: message.chat.id, text: "Arrivederci a presto #{message.from.first_name}, grazie per aver utilizzato @VLpesaro_bot")
-				# bot.api.send_message(chat_id: ENV['MY_CHAT_ID'], text: "Utente cancellato: #{message.from.first_name} #{message.from.last_name} (#{message.from.username})")
 			when '/meteo'
 				bot.api.send_message(chat_id: message.chat.id, text: "http://trottomv.dtdns.net/meteo#{Time.now.strftime("%Y%m%d")}.png")
 			when '/basketnews'
@@ -51,12 +49,6 @@ Ecco i comandi per interagire con me:
 
 Questo bot NON e' associato a U.S.Victoria Libertas Pallacanestro s.s.r.l. che e' una societa' registrata.
 ")
-			# when '/allmsg'
-			# 	db = SQLite3::Database.open ENV['PATH_DB']
-			# 	query = db.execute "SELECT DISTINCT ID FROM chatid"
-			# 	query.each do | eachid |
-			# 		bot.api.send_message(chat_id: "#{eachid}".tr("\[\]\"", "").lstrip, text: "Ciao a tutti...")
-			# 	end
 			end
 		end
 		end
@@ -88,7 +80,6 @@ Questo bot NON e' associato a U.S.Victoria Libertas Pallacanestro s.s.r.l. che e
 	    twitter_handlers.each do |handler|
 	      TwitterReader.new(handler).tweets_for_last_minutes(minutes).each do |tweet|
 					send_message("#{eachid}".tr("\[\]\"", ""), tweet.url)
-					# send_message("#{eachid}".tr("\[\]\"", ""), tweet.status("#{tweet.url}"[tweet.url.length-18,tweet.url.length]))
 				end
       end
     end
