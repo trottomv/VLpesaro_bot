@@ -99,7 +99,7 @@ GEM
       chronic (>= 0.6.3)
     xkcd (1.1.0)
       google-search
-      nokogiri (>= 1.5.0)
+      nokogiri (~> 1.8.2)
 
 PLATFORMS
   ruby
